@@ -15,7 +15,21 @@ class Repositorio extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        String SCRIPT_CREATE = "CREATE TABLE IF NOT EXISTS "+ RepositorioAluno.TABELA+
+                "("+
+                RepositorioAluno.ALUNO_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                RepositorioAluno.ALUNO_NOME+" TEXT NOT NULL,"+
+                RepositorioAluno.ALUNO_MATRICULA+" TEXT NOT NULL "+
+                ")";
+        db.execSQL(SCRIPT_CREATE);
 
+        SCRIPT_CREATE = "CREATE TABLE IF NOT EXISTS "+RepositorioProfessor.TABELA+
+                "("+
+                RepositorioProfessor.PROFESSOR_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                RepositorioProfessor.PROFESSOR_NOME+" TEXT NOT NULL,"+
+                RepositorioProfessor.PROFESSOR_MATRICULA+" TEXT NOT NULL "+
+                ")";
+        db.execSQL(SCRIPT_CREATE);
     }
 
     @Override

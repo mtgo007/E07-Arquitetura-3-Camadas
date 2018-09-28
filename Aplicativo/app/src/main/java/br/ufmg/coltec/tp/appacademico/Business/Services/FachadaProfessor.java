@@ -2,8 +2,11 @@ package br.ufmg.coltec.tp.appacademico.Business.Services;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+
 import br.ufmg.coltec.tp.appacademico.Business.Interfaces.IFachadaProfessor;
 import br.ufmg.coltec.tp.appacademico.Business.Models.Integrante;
+import br.ufmg.coltec.tp.appacademico.Business.Models.IntegranteProfessor;
 
 /**
  * Created by mtgo0 on 26/09/2018.
@@ -18,22 +21,27 @@ public class FachadaProfessor implements IFachadaProfessor {
     }
 
     @Override
-    public void inserir(Integrante i) {
+    public void inserirProfessor(IntegranteProfessor i) {
         this.controladorProfessor.inserirProfessor(i);
     }
 
     @Override
-    public Integrante consultar(int id) {
+    public void atualizarProfessor(IntegranteProfessor i) {
+        this.controladorProfessor.atualizarProfessor(i);
+    }
+
+    @Override
+    public IntegranteProfessor consultarProfessor(int id) {
         return this.controladorProfessor.consultarProfessor(id);
     }
 
     @Override
-    public Integrante consultarTodos() {
-        return null;
+    public ArrayList<IntegranteProfessor> consultarTodosProfessores() {
+        return this.controladorProfessor.consultarTodosProfessores();
     }
 
     @Override
-    public void remover(int id) {
-
+    public void removerProfessores(int id) {
+        this.controladorProfessor.deletarProfessor(id);
     }
 }

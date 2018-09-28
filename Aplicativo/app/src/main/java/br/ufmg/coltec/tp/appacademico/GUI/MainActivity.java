@@ -1,48 +1,64 @@
 package br.ufmg.coltec.tp.appacademico.GUI;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
-import br.ufmg.coltec.tp.appacademico.Business.Models.Aluno;
-import br.ufmg.coltec.tp.appacademico.Business.Services.FachadaAluno;
 import br.ufmg.coltec.tp.appacademico.R;
 
 public class MainActivity extends Activity {
+
+    private Button btn_alunos;
+    private Button btn_professor;
+
+    private Button btn_new_aluno;
+    private Button btn_new_professor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FachadaAluno f = new FachadaAluno(this);
-        Aluno a = new Aluno(0, "Dener", "2016952916");
+        btn_alunos = findViewById(R.id.btn_aluno);
+        btn_professor = findViewById(R.id.btn_professor);
+        btn_new_aluno = findViewById(R.id.btn_new_aluno);
+        btn_new_professor = findViewById(R.id.btn_new_professor);
 
-        f.inserir(a);
+        btn_alunos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent alunos = new Intent(MainActivity.this, AlunoActivity.class);
+                startActivity(alunos);
+            }
+        });
 
-        /*Integrante b = f.consultar(0);
-        if (b != null) {
-            Toast.makeText(this, b.getNome(), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Não encontrado", Toast.LENGTH_SHORT).show();
-        }
+        btn_professor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent professores = new Intent(MainActivity.this, ProfessorActivity.class);
+                startActivity(professores);
+            }
+        });
 
-        FachadaAluno f = new FachadaAluno(this);
-        Professor a = new Professor(0, "Dener", "2016952916");
+        btn_new_aluno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent createAluno = new Intent(MainActivity.this, AlunoCreateActivity.class);
+                startActivity(createAluno);
+            }
+        });
 
-        f.inserir(a);
-
-        Integrante b = f.consultar(1);
-        if (b != null) {
-            Toast.makeText(this, b.getNome(), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Não encontrado", Toast.LENGTH_SHORT).show();
-        }*/
-
-        Spinner spinner_tipo = findViewById(R.id.spinner_tipo);
-        String[] tipos = new String[] {"Alunos", "Professores"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, tipos);
-        spinner_tipo.setAdapter(adapter);
+        btn_new_professor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent createProfessor = new Intent(MainActivity.this, ProfessorCreateActivity.class);
+                startActivity(createProfessor);
+            }
+        });
     }
 }

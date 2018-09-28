@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".GUI.ProfessorActivity" />
+        <activity android:name=".GUI.AlunoActivity" />
+        <activity android:name=".GUI.AlunoCreateActivity" />
+        <activity android:name=".GUI.AlunoEditActivity" />
+        <activity android:name=".GUI.ProfessorCreateActivity" />
+        <activity android:name=".GUI.ProfessorEditActivity"></activity>
     </application>
 
 </manifest>
